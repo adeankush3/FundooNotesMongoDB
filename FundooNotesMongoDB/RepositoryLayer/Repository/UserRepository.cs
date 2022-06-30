@@ -27,7 +27,6 @@ namespace RepositoryLayer.Repository
             var database = userclient.GetDatabase(db.DatabaseName);
             User = database.GetCollection<UserModel>("User");
         }
-
         public async Task<bool> Forgot(string emailID)
         {
             try
@@ -37,8 +36,6 @@ namespace RepositoryLayer.Repository
                 {
                     return false;
                 }
-
-
                 MessageQueue queue;
                 //Add message to queue
                 if (MessageQueue.Exists(@".\Private$\BooKStore"))
@@ -95,7 +92,6 @@ namespace RepositoryLayer.Repository
             {
                 return null;
             }
-
             // generate token
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenKey = Encoding.ASCII.GetBytes("THIS_IS_MY_KEY_TO_GENERATE_TOKEN");
@@ -116,10 +112,8 @@ namespace RepositoryLayer.Repository
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
-
         public async Task<UserModel> Register(UserModel register)
         {
-
             try
             {
                 var check = this.User.AsQueryable().Where(x => x.emailID == register.emailID).SingleOrDefault();
@@ -136,7 +130,6 @@ namespace RepositoryLayer.Repository
                 throw new Exception(e.Message);
             }
         }
-
         public async Task<UserModel> Login(LoginModel login)
         {
             try
@@ -159,7 +152,6 @@ namespace RepositoryLayer.Repository
                 throw new Exception(e.Message);
             }
         }
-
         public async Task<UserModel> Reset(ResetModel reset)
         {
             try
@@ -179,6 +171,5 @@ namespace RepositoryLayer.Repository
                 throw new Exception(e.Message);
             }
         }  
-       
     }
 }

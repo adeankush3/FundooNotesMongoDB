@@ -1,7 +1,9 @@
 ﻿using BussinessLayer.Interface;
 using DataBaseLayer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -12,8 +14,6 @@ namespace FundooNotesMongoDB.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserBL manager;
-        
-
         public UserController(IUserBL manager)
         {
             this.manager = manager;
@@ -43,6 +43,7 @@ namespace FundooNotesMongoDB.Controllers
                 }
             }
         }
+        
         //Login Part
         [HttpPost]
         [Route("login")]
@@ -71,13 +72,15 @@ namespace FundooNotesMongoDB.Controllers
                 return this.NotFound(new { Status = false, Message = e.Message });
             }
         }
+        //[Authorize]
         [HttpPut]
         [Route("reset")]
         public async Task<IActionResult> Reset(ResetModel reset)
         {
             try
             {
-                string emailID = User.FindFirst(ClaimTypes.Email).Value.ToString();
+                 //string emailID = User.FindFirst(ClaimTypes.Email).Value.ToString();
+                //var emailID = User.Claims.FirstOrDefault(e => e.Type == "Email").Value.ToString();
                 var response = await this.manager.Reset(reset);
                 if (response != null)
                 {

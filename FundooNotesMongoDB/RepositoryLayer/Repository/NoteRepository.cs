@@ -117,9 +117,7 @@ namespace RepositoryLayer.Repository
 
         public IEnumerable<NoteModel> GetAllNotes()
         {
-            {
                 return Note.Find(FilterDefinition<NoteModel>.Empty).ToList();
-            }
         }
 
         public async Task<NoteModel> Pin(NoteModel note)
@@ -162,7 +160,8 @@ namespace RepositoryLayer.Repository
                 if (ifExists != null)
                 {
                     await this.Note.UpdateOneAsync(x => x.NoteID == note.NoteID,
-                        Builders<NoteModel>.Update.Set(x => x.IsRemainder, note.IsRemainder));
+                        Builders<NoteModel>.Update.Set(x => x.IsRemainder, note.IsRemainder)
+                        .Set(x => x.Remainder, note.Remainder));
                     return ifExists;
 
                 }

@@ -1,5 +1,6 @@
 ﻿using BussinessLayer.Interface;
 using DataBaseLayer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,9 +19,10 @@ namespace FundooNotesMongoDB.Controllers
         {
             this.manager = manager;
         }
+
+        //[Authorize]
         [HttpPost]
         [Route("addNote")]
-
         public async Task<IActionResult> AddNote([FromBody] NoteModel note)
         {
             try
@@ -43,6 +45,7 @@ namespace FundooNotesMongoDB.Controllers
                 }
             }
         }
+        //[Authorize]
         [HttpPut]
         [Route("upadatenote")]
         public async Task<IActionResult> UpdateNote([FromBody] NoteModel note)
@@ -70,6 +73,7 @@ namespace FundooNotesMongoDB.Controllers
                 }
             }
         }
+        //[Authorize]
         [HttpDelete]
         [Route("deleteNote")]
         public async Task<IActionResult> DeleteNote(NoteModel note)

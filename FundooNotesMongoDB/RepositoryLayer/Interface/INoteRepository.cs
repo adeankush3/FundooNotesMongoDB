@@ -10,7 +10,7 @@ namespace RepositoryLayer.Interface
     {
         Task<NoteModel> AddNote(NoteModel note);
         Task<NoteModel> UpdateNote(NoteModel note);
-        Task<bool> DeleteNote(NoteModel book);
+        Task<bool> DeleteNote(NoteModel note);
         IEnumerable<NoteModel> GetAllNotes();
 
         Task<NoteModel> ChangeColour(NoteModel note); 

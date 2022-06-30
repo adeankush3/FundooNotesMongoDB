@@ -48,6 +48,8 @@ namespace FundooNotesMongoDB
             services.AddTransient<INoteBL, NoteBL>();
             services.AddTransient<INoteRepository, NoteRepository>();
 
+            services.AddTransient<ILabelBL, LabelBL>();
+            services.AddTransient<ILabelRepository, LabelRepository>();
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
