@@ -19,7 +19,7 @@ namespace FundooNotesMongoDB.Controllers
         {
             this.manager = manager;
         }
-       // [Authorize]
+       
         [HttpPost]
         [Route("addLabel")]
         public async Task<IActionResult> AddLabel([FromBody] LabelModel label)
@@ -44,7 +44,7 @@ namespace FundooNotesMongoDB.Controllers
                 }
             }
         }
-        //[Authorize]
+        [Authorize]
         [HttpDelete]
         [Route("deleteLabel")]
         public async Task<IActionResult> DeleteLabel(LabelModel label)
@@ -72,6 +72,7 @@ namespace FundooNotesMongoDB.Controllers
             }
 
         }
+        [Authorize]
         [HttpGet]
         [Route("getallLabel")]
         public IEnumerable<LabelModel> GetAllLabels()

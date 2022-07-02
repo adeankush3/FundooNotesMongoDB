@@ -43,8 +43,9 @@ namespace FundooNotesMongoDB.Controllers
                 }
             }
         }
-        
+
         //Login Part
+        //[Authorize]
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login(LoginModel login)
@@ -100,6 +101,7 @@ namespace FundooNotesMongoDB.Controllers
                 return this.NotFound(new { Status = false, Message = e.Message });
             }
         }
+        //[Authorize]
         [HttpPost]
         [Route("forgot")]
         public async Task<IActionResult> Forgot(string emailID)

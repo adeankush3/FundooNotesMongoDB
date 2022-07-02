@@ -45,7 +45,7 @@ namespace FundooNotesMongoDB.Controllers
                 }
             }
         }
-        //[Authorize]
+        [Authorize]
         [HttpPut]
         [Route("upadatenote")]
         public async Task<IActionResult> UpdateNote([FromBody] NoteModel note)
@@ -73,7 +73,7 @@ namespace FundooNotesMongoDB.Controllers
                 }
             }
         }
-        //[Authorize]
+        [Authorize]
         [HttpDelete]
         [Route("deleteNote")]
         public async Task<IActionResult> DeleteNote(NoteModel note)
@@ -101,6 +101,7 @@ namespace FundooNotesMongoDB.Controllers
             }
 
         }
+        [Authorize]
         [HttpGet]
         [Route("getallNotes")]
         public IEnumerable<NoteModel> GetAllNotes()
@@ -117,6 +118,7 @@ namespace FundooNotesMongoDB.Controllers
                 throw;
             }
         }
+        [Authorize]
         [HttpPut]
         [Route("ChangeColour")]
         public async Task<IActionResult> ChangeColour([FromBody] NoteModel note)
@@ -144,6 +146,7 @@ namespace FundooNotesMongoDB.Controllers
                 }
             }
         }
+        [Authorize]
         [HttpPut]
         [Route("ArchiveNote")]
         public async Task<IActionResult> ArchiveNote([FromBody] NoteModel note)
@@ -171,6 +174,7 @@ namespace FundooNotesMongoDB.Controllers
                 }
             }
         }
+        [Authorize]
         [HttpPut]
         [Route("PinNotes")]
         public async Task<IActionResult> Pin([FromBody] NoteModel note)
@@ -198,6 +202,7 @@ namespace FundooNotesMongoDB.Controllers
                 }
             }
         }
+        [Authorize]
         [HttpPut]
         [Route("TrashNote")]
         public async Task<IActionResult> Trash([FromBody] NoteModel note)
@@ -225,6 +230,7 @@ namespace FundooNotesMongoDB.Controllers
                 }
             }
         }
+        [Authorize]
         [HttpPut]
         [Route("setRemainder")]
         public async Task<IActionResult> Remainder([FromBody] NoteModel note)
